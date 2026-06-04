@@ -1,9 +1,9 @@
 package controller;
 
+import model.AIPlayer;
 import model.Board;
 import model.GameEntity;
 import model.Player;
-import model.AIPlayer;
 
 public class GameController {
     private Board board;
@@ -11,6 +11,7 @@ public class GameController {
     private GameEntity player2;
     private GameEntity currentPlayer;
     private boolean gameOver;
+    private Scoreboard scoreboard;
 
     public GameController(boolean vsAI) {
         board = new Board();
@@ -18,6 +19,7 @@ public class GameController {
         player2 = vsAI ? new AIPlayer('O') : new Player("Player 2", 'O');
         currentPlayer = player1;
         gameOver = false;
+        scoreboard = new Scoreboard();
     }
 
     public boolean makeMove(int row, int col) {
@@ -42,6 +44,7 @@ public class GameController {
     public Board getBoard()              { return board; }
     public boolean isGameOver()          { return gameOver; }
     public void setGameOver(boolean g)   { gameOver = g; }
+    public Scoreboard getScoreboard()    { return scoreboard; }
 
     public void resetGame() {
         board.reset();
